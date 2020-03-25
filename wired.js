@@ -1,29 +1,18 @@
-let requestURL = 'https://200427063.github.io/Lab4/wired.json';
+
+//
+function loadProducts(url,callback){
+  let request = new XMLHttpRequest();
+  request.open('GET', url);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+  callback(request.response);
+
+  };
+}
 
 
-//create new XHR
-let request = new XMLHttpRequest();
-
-//open new request
-request.open('GET', requestURL);
-
-// request Types
-request.responseType = 'json';
-// send the request using send
-
-request.send();
-
-// wait for the request to be returned , store responce i na variables,
-//invoke pizzaTypes function with pizzatypes
-
-request.onload = function() {
-let products = request.response;
-console.log(products);
-producttypes(products);
-
-};
-
-
+//callback function
 
 function producttypes(jsonObj) {
   let producttypes = jsonObj.producttypes;
@@ -45,7 +34,7 @@ function producttypes(jsonObj) {
   h2.textContent = producttypes[i].name;
   p1.textContent = 'price : ' + producttypes[i].price;
   p2.textContent = 'details : ' + producttypes[i].details;
-  function my() {
+  function myFunction() {
     p2.document.getElementById("details").innerHTML = + producttypes[i].details;
   }
 
@@ -60,3 +49,4 @@ function producttypes(jsonObj) {
 
 
 }
+loadProducts('https://200427063.github.io/Lab4/wired.json', producttypes);
