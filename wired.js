@@ -1,4 +1,4 @@
-let requestURL = 'https://200427063.github.io/JSON-Georgin/pizza.json';
+let requestURL = 'https://200427063.github.io/Lab4/wired.json';
 
 
 //create new XHR
@@ -17,19 +17,19 @@ request.send();
 //invoke pizzaTypes function with pizzatypes
 
 request.onload = function() {
-let plentyPizza = request.response;
-console.log(plentyPizza);
-pizzaTypes(plentyPizza);
+let products = request.response;
+console.log(products);
+producttypes(products);
 
 };
 
 
 
-function pizzaTypes(jsonObj) {
-  let pizzaTypes = jsonObj.pizzaTypes;
+function producttypes(jsonObj) {
+  let producttypes = jsonObj.producttypes;
 
-  let section = document.querySelector('section');
-  for (let i = 0; i< pizzaTypes.length; i++){
+  let div = document.querySelector('div');
+  for (let i = 0; i< producttypes.length; i++){
 //build the new html element on our page
     let article = document.createElement('article');
     let h2 = document.createElement('h2')
@@ -39,18 +39,14 @@ function pizzaTypes(jsonObj) {
     let ul = document.createElement('ul')
 
 
-    img.setAttribute('src', 'https://200427063.github.io/JSON-Georgin/assets/'
-  + pizzaTypes[i].image);
-  img.setAttribute('alt', pizzaTypes[i].image);
-  h2.textContent = pizzaTypes[i].name;
-  p1.textContent = 'size' + pizzaTypes[i].size;
-  p2.textContent = 'price' + pizzaTypes[i].price;
-  let toppings = pizzaTypes[i].toppings;
-  for(let j = 0; j<  toppings.length; j++) {
-
-    let listItem = document.createElement('li');
-    listItem.textContent = toppings[j];
-    ul.appendChild(listItem);
+    img.setAttribute('src', 'https://200427063.github.io/Lab4/assets/'
+  + producttypes[i].image);
+  img.setAttribute('alt', producttypes[i].image);
+  h2.textContent = producttypes[i].name;
+  p1.textContent = 'price : ' + producttypes[i].price;
+  p2.textContent = 'details : ' + producttypes[i].details;
+  function my() {
+    p2.document.getElementById("details").innerHTML = + producttypes[i].details;
   }
 
   article.appendChild(img);
@@ -58,7 +54,7 @@ function pizzaTypes(jsonObj) {
     article.appendChild(p1);
     article.appendChild(p2);
     article.appendChild(ul);
-  section .appendChild(article);
+  div .appendChild(article);
 
   }
 

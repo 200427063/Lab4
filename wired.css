@@ -55,9 +55,13 @@ section {
   justify-content:space-between;
 }
 
-section img {
+div img {
   display:block;
   margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  background-color: powderblue;
+}
 }
 
 article {
@@ -70,7 +74,7 @@ header {
 
 footer  {
   padding: 100px 0 0 45px;
-  text-align:right;
+  text-align:left;
 }
 
 footer p {
