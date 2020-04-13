@@ -10,6 +10,13 @@ function loadProducts(url, callback) {
     };
 }
 
+fetch('https://200427063.github.io/Lab4/wired.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
 
 //callback function
 
